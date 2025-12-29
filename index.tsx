@@ -7,15 +7,15 @@ import {
   X, 
   Layout, 
   Zap, 
-  BarChart3,
-  Globe,
-  Star,
-  Plus,
-  Sparkles,
-  Loader2,
-  Instagram,
-  Mail,
-  Send
+  BarChart3, 
+  Globe, 
+  Star, 
+  Plus, 
+  Sparkles, 
+  Loader2, 
+  Instagram, 
+  Mail, 
+  Send 
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { GoogleGenAI } from "@google/genai";
@@ -41,7 +41,7 @@ const getStrategyInsight = async (businessName: string, goals: string) => {
   try {
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
-      contents: `You are a world-class brand strategist for Vector by Volta. 
+      contents: `You are a world-class brand strategist for Vector Studios. 
       Analyze this business: "${businessName}" with these goals: "${goals}".
       Provide 3 high-impact "Elite Strategic Moves" (concise, professional, and confident). 
       Format as a JSON array of strings. Do not include any other text.`,
@@ -308,7 +308,7 @@ const Navbar = ({ setPage, onOpenBooking }: { setPage: (p: string) => void, onOp
             <Zap size={16} className="text-[#22c55e] fill-[#22c55e]" />
           </div>
           <span className="text-zinc-900">VECTOR</span>
-          <span className="text-zinc-400 font-normal">by Volta</span>
+          <span className="text-zinc-400 font-normal">STUDIOS</span>
         </div>
 
         <div className="hidden md:flex gap-10 items-center">
@@ -671,9 +671,9 @@ const AboutPage = () => (
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
         <Reveal>
           <div className="space-y-12">
-            <h1 className="text-6xl md:text-9xl font-black tracking-tighter leading-[0.8]">About <br /> <span className="text-[#22c55e]">Vector by Volta</span></h1>
+            <h1 className="text-6xl md:text-9xl font-black tracking-tighter leading-[0.8]">About <br /> <span className="text-[#22c55e]">Vector Studios</span></h1>
             <div className="space-y-10 text-2xl md:text-3xl text-zinc-500 font-medium leading-relaxed">
-              <p className="text-zinc-900 font-black text-4xl italic leading-tight border-l-8 border-[#22c55e] pl-10">"Vector by Volta was built for businesses that care about how they show up."</p>
+              <p className="text-zinc-900 font-black text-4xl italic leading-tight border-l-8 border-[#22c55e] pl-10">"Vector Studios was built for businesses that care about how they show up."</p>
               <div className="space-y-6">
                 <p>We believe good design isn’t loud — it’s clear. It’s intentional. And it earns trust.</p>
                 <p>We work with local brands that want to look established, credible, and professional across every touchpoint — from their website to their social media.</p>
@@ -885,7 +885,7 @@ const Footer = ({ setPage }: { setPage: (p: string) => void }) => (
           </div>
           <div className="flex flex-col leading-none">
             <span className="text-zinc-900">VECTOR</span>
-            <span className="text-zinc-400 font-bold text-base tracking-[0.3em] mt-2">BY VOLTA</span>
+            <span className="text-zinc-400 font-bold text-base tracking-[0.3em] mt-2">STUDIOS</span>
           </div>
         </div>
         <p className="text-2xl text-zinc-500 font-bold max-w-sm leading-relaxed">Built for businesses that care about how they show up.</p>
@@ -901,13 +901,13 @@ const Footer = ({ setPage }: { setPage: (p: string) => void }) => (
       <div>
         <h4 className="font-black uppercase tracking-[0.4em] text-[10px] mb-12 text-zinc-400">Connect</h4>
         <ul className="space-y-6 font-black text-2xl tracking-tighter">
-          <li><a href="#" className="hover:text-[#22c55e] transition-colors">Instagram</a></li>
+          <li><a href="https://www.instagram.com/vectr_studio/" target="_blank" rel="noopener noreferrer" className="hover:text-[#22c55e] transition-colors">Instagram</a></li>
           <li><a href="#" className="hover:text-[#22c55e] transition-colors">Email Us</a></li>
         </ul>
       </div>
     </div>
     <div className="max-w-7xl mx-auto mt-40 pt-16 border-t border-zinc-100 flex flex-col md:flex-row justify-between items-center gap-10 text-zinc-400 font-black uppercase tracking-[0.5em] text-[10px]">
-      <p>© 2024 Vector by Volta</p>
+      <p>© 2024 Vector Studios</p>
       <div className="flex gap-16">
         <p>Local Legend Protocol</p>
         <p>Privacy / Terms</p>
