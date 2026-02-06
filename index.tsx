@@ -15,7 +15,8 @@ import {
   Loader2, 
   Instagram, 
   Mail, 
-  Send 
+  Send,
+  ExternalLink
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { GoogleGenAI } from "@google/genai";
@@ -333,6 +334,7 @@ const Navbar = ({ setPage, onOpenBooking }: { setPage: (p: string) => void, onOp
 
   const links = [
     { name: 'Home', id: 'home' },
+    { name: 'Portfolio', id: 'portfolio' },
     { name: 'Services', id: 'services' },
     { name: 'Pricing', id: 'pricing' },
     { name: 'About', id: 'about' },
@@ -356,7 +358,7 @@ const Navbar = ({ setPage, onOpenBooking }: { setPage: (p: string) => void, onOp
           <span className="text-zinc-400 font-normal hidden xs:inline">STUDIOS</span>
         </div>
 
-        <div className="hidden md:flex gap-8 lg:gap-10 items-center">
+        <div className="hidden md:flex gap-6 lg:gap-10 items-center">
           {links.map(link => (
             <button
               key={link.id}
@@ -491,7 +493,7 @@ const HomePage = ({ setPage, onOpenBooking }: { setPage: (p: string) => void, on
       <div className="absolute top-0 right-0 w-[300px] h-[300px] sm:w-[500px] sm:h-[500px] bg-[#22c55e]/10 rounded-full blur-[80px] sm:blur-[120px] -mr-40 -mt-40 sm:-mr-60 sm:-mt-60"></div>
       <div className="relative z-10 text-center py-12 sm:py-20">
         <Reveal direction="scale">
-          <h2 className="text-4xl sm:text-6xl md:text-9xl font-black text-white mb-8 sm:mb-12 tracking-tighter leading-[0.8]">Ready to elevate <br /> your brand?</h2>
+          <h2 className="text-4xl sm:text-6xl md:text-8xl font-black text-white mb-8 sm:mb-12 tracking-tighter leading-[0.8]">Ready to elevate <br /> your brand?</h2>
           <button 
             onClick={onOpenBooking}
             className="bg-[#22c55e] hover:bg-[#1da84d] text-white px-8 sm:px-16 py-5 sm:py-8 rounded-full font-black text-lg sm:text-2xl shadow-xl sm:shadow-2xl shadow-green-900/40 transition-all flex items-center gap-3 sm:gap-4 mx-auto group"
@@ -503,6 +505,93 @@ const HomePage = ({ setPage, onOpenBooking }: { setPage: (p: string) => void, on
     </Section>
   </motion.div>
 );
+
+const PortfolioPage = () => {
+  const projects = [
+    {
+      title: "Persis Biryani",
+      type: "Elite Heritage Fine-Dining Experience",
+      image: "https://images.unsplash.com/photo-1633945274405-b6c8069047b0?auto=format&fit=crop&w=1600&q=80",
+      link: "https://persis-website-vector-by-volta.vercel.app/",
+      tag: "Live Experience"
+    },
+    {
+      title: "Koi Sushi",
+      type: "Modern Japanese Gastronomy & Tech Integration",
+      image: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=1600&q=80",
+      link: "https://koi-sushi.vercel.app/",
+      tag: "Live Experience"
+    }
+  ];
+
+  return (
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }} className="pt-24 sm:pt-32">
+      <Section>
+        <Reveal direction="up">
+          <div className="text-center max-w-4xl mx-auto mb-16 sm:mb-24">
+            <h1 className="text-5xl sm:text-7xl md:text-9xl font-black tracking-tighter mb-6 sm:mb-8 leading-[0.85]">Our Work</h1>
+            <p className="text-xl sm:text-3xl text-zinc-500 font-bold leading-relaxed">We transform local establishments into high-performance digital landmarks.</p>
+          </div>
+        </Reveal>
+
+        <StaggerContainer>
+          <div className="max-w-5xl mx-auto space-y-12 sm:space-y-24">
+            {projects.map((project, idx) => (
+              <StaggerItem key={idx}>
+                <div className="group relative block overflow-hidden rounded-[2rem] sm:rounded-[4rem] bg-zinc-100 border border-zinc-200 shadow-2xl">
+                  <div className="aspect-[16/9] overflow-hidden">
+                    <img 
+                      src={project.image} 
+                      alt={project.title} 
+                      className="w-full h-full object-cover transition-transform duration-[1500ms] group-hover:scale-110"
+                    />
+                  </div>
+                  
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent flex flex-col justify-end p-8 sm:p-20">
+                    <div className="space-y-4 sm:space-y-6">
+                      <div className="bg-[#22c55e] text-white text-[10px] font-black uppercase tracking-[0.5em] px-6 py-2 rounded-full w-fit">
+                        {project.tag}
+                      </div>
+                      <h3 className="text-4xl sm:text-7xl font-black text-white tracking-tighter leading-none">{project.title}</h3>
+                      <p className="text-xl sm:text-3xl text-white/70 font-bold leading-tight max-w-2xl">{project.type}</p>
+                      
+                      <div className="pt-8 sm:pt-12">
+                        <a 
+                          href={project.link} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="bg-white text-zinc-900 px-10 py-5 rounded-full font-black text-lg flex items-center gap-4 w-fit hover:bg-[#22c55e] hover:text-white transition-all shadow-2xl"
+                        >
+                          Visit Live Experience <ExternalLink size={20} />
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </StaggerItem>
+            ))}
+          </div>
+        </StaggerContainer>
+
+        <Reveal direction="scale" delay={0.3}>
+          <div className="mt-32 bg-[#121212] p-12 sm:p-24 rounded-[3rem] sm:rounded-[5rem] text-center text-white relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#22c55e]/20 rounded-full blur-[100px] -mr-40 -mt-40"></div>
+            <h2 className="text-4xl sm:text-6xl md:text-8xl font-black mb-8 tracking-tighter leading-none relative z-10">Your brand <br /> could be next.</h2>
+            <p className="text-xl sm:text-2xl font-bold mb-12 opacity-70 max-w-2xl mx-auto leading-relaxed relative z-10">We help brands move from local obscurity to premium authority.</p>
+            <div className="relative z-10">
+              <button 
+                onClick={() => {}} 
+                className="bg-[#22c55e] hover:bg-[#1da84d] text-white px-12 sm:px-16 py-6 sm:py-8 rounded-full font-black text-xl sm:text-2xl transition-all shadow-2xl shadow-green-900/40"
+              >
+                Let's Build It
+              </button>
+            </div>
+          </div>
+        </Reveal>
+      </Section>
+    </motion.div>
+  );
+};
 
 const ServicesPage = () => {
   const servicesData = [
@@ -861,7 +950,7 @@ const Footer = ({ setPage }: { setPage: (p: string) => void }) => (
       <div>
         <h4 className="font-black uppercase tracking-[0.3em] text-[9px] mb-8 text-zinc-400">Navigate</h4>
         <ul className="space-y-4 font-black text-xl sm:text-2xl tracking-tighter">
-          {['home', 'services', 'pricing', 'about', 'contact'].map(p => (
+          {['home', 'portfolio', 'services', 'pricing', 'about', 'contact'].map(p => (
             <li key={p}><button onClick={() => { setPage(p); window.scrollTo(0,0); }} className="hover:text-[#22c55e] transition-colors capitalize">{p}</button></li>
           ))}
         </ul>
@@ -893,6 +982,7 @@ const App = () => {
   const renderPage = () => {
     switch(page) {
       case 'home': return <HomePage setPage={setPage} onOpenBooking={() => setIsBookingOpen(true)} />;
+      case 'portfolio': return <PortfolioPage />;
       case 'services': return <ServicesPage />;
       case 'pricing': return <PricingPage onOpenBooking={() => setIsBookingOpen(true)} />;
       case 'about': return <AboutPage />;
